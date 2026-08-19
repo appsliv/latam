@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Datos para Contrato · LIV Colombia</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FFFFFF;
+  --surface: #F7F6FD;
+  --accent: #4B3E98;
+  --accent-hover: #3A2F7A;
+  --accent-yellow: #FEC238;
+  --accent-orange: #F47432;
+  --accent-blue: #9FC2E6;
+  --text: #1A1530;
+  --text-muted: #6B6490;
+  --border: #DDD9F5;
+  --success: #2E9D57;
+  --danger: #C0392B;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ── HEADER ── */
+.header {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--accent);
+  box-shadow: 0 2px 16px rgba(75,62,152,0.18);
+}
+.header-inner {
+  max-width: 760px; margin: 0 auto;
+  padding: 0 28px; height: 68px;
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+}
+.logo-wrap {
+  display: flex; align-items: center; gap: 12px;
+}
+.logo-wrap img { width: 36px; height: 36px; object-fit: contain; }
+.logo-brand {
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px; font-weight: 700;
+  color: #fff; letter-spacing: 0.5px; line-height: 1.2;
+}
+.logo-sub { font-size: 11px; font-weight: 400; color: rgba(255,255,255,0.65); }
+
+.progress-block { flex: 1; max-width: 280px; }
+.progress-meta {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 7px;
+}
+.progress-step-label {
+  font-size: 12px; font-weight: 700; color: #fff;
+  letter-spacing: 0.3px; font-family: 'Outfit', sans-serif;
+}
+.progress-pct { font-size: 12px; color: rgba(255,255,255,0.7); }
+.progress-track {
+  height: 4px; background: rgba(255,255,255,0.25); border-radius: 2px; overflow: hidden;
+}
+.progress-fill {
+  height: 100%; background: #fff; border-radius: 2px;
+  transition: width .4s cubic-bezier(.4,0,.2,1);
+}
+
+/* ── LAYOUT ── */
+.container { max-width: 760px; margin: 0 auto; padding: 36px 28px 80px; }
+
+/* ── INTRO ── */
+.intro {
+  background: var(--surface); border-radius: 12px;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  padding: 24px 28px; margin-bottom: 32px;
+}
+.intro-tag {
+  font-size: 10px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--accent);
+  font-family: 'Outfit', sans-serif; margin-bottom: 6px;
+}
+.intro-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px; font-weight: 700; color: var(--text);
+  letter-spacing: -0.3px; margin-bottom: 8px;
+}
+.intro-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+
+/* ── STEPS ── */
+.step { display: none; animation: fadeUp .28s ease; }
+.step.active { display: block; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── SECTION CARD ── */
+.section-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  margin-bottom: 20px;
+}
+.step-badge {
+  display: inline-flex; align-items: center;
+  background: var(--accent); color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; padding: 4px 10px;
+  border-radius: 20px; margin-bottom: 10px;
+}
+.section-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px; font-weight: 700; color: var(--text);
+  letter-spacing: -0.3px; margin-bottom: 20px;
+  padding-bottom: 14px; border-bottom: 1px solid var(--border);
+}
+.subsection-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px; font-weight: 700; color: var(--accent);
+  letter-spacing: 0.4px; margin: 22px 0 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.subsection-title:first-of-type { margin-top: 0; }
+.subsection-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: rgba(75,62,152,0.12); color: var(--accent);
+  font-size: 10px; font-weight: 700;
+}
+
+/* ── FIELDS ── */
+.fgroup { margin-bottom: 18px; }
+.frow-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 18px; }
+.frow-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 18px; }
+@media(max-width:560px) { .frow-2, .frow-3 { grid-template-columns: 1fr; } }
+
+.flabel {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.8px;
+  text-transform: uppercase; color: var(--text-muted);
+  font-family: 'Outfit', sans-serif;
+  margin-bottom: 7px; display: flex; align-items: center; gap: 4px;
+}
+.frequired { color: var(--accent-orange); font-size: 14px; line-height: 1; }
+.fhint { font-size: 11px; color: var(--text-muted); margin-top: 5px; line-height: 1.5; }
+.ferror { font-size: 11px; color: var(--danger); margin-top: 5px; display: none; font-weight: 500; }
+.ferror.show { display: block; }
+
+input[type=text], input[type=email], input[type=tel],
+input[type=number], input[type=date], textarea {
+  width: 100%;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition: border-color .18s, box-shadow .18s;
+  appearance: none; -webkit-appearance: none;
+}
+input:disabled { background: var(--border); color: var(--text-muted); cursor: not-allowed; }
+input:focus, textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(75,62,152,0.10);
+}
+input::placeholder, textarea::placeholder { color: #c4c0d8; font-size: 13px; }
+input.error, textarea.error {
+  border-color: var(--danger);
+  box-shadow: 0 0 0 3px rgba(192,57,43,0.08);
+}
+input.valid { border-color: var(--success); }
+input[type=number] {
+  font-size: 15px; font-weight: 600; text-align: center; padding: 8px 6px;
+}
+input[type=date]::-webkit-calendar-picker-indicator { cursor: pointer; opacity: 0.5; }
+textarea { resize: vertical; min-height: 84px; line-height: 1.55; }
+
+/* ── SAME-PERSON TOGGLE ── */
+.same-person-card {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 14px 16px; background: rgba(75,62,152,0.05);
+  border: 1.5px dashed var(--border); border-radius: 10px;
+  margin-bottom: 16px; cursor: pointer; user-select: none;
+}
+.same-person-card input[type=checkbox] {
+  width: 18px; height: 18px; margin-top: 1px; accent-color: var(--accent); cursor: pointer; flex-shrink: 0;
+}
+.same-person-text { font-size: 13px; color: var(--text); font-weight: 500; }
+.same-person-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+/* ── NIVELES ── */
+.nivel-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+@media(max-width:560px) { .nivel-grid { grid-template-columns: 1fr; } }
+.nivel-card { position: relative; }
+.nivel-card input[type=checkbox] { position: absolute; opacity: 0; width: 0; height: 0; }
+.nivel-card label {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 16px; background: var(--bg);
+  border: 1.5px solid var(--border); border-radius: 10px;
+  cursor: pointer; transition: all .18s; user-select: none; height: 100%;
+}
+.nivel-card label:hover { border-color: var(--accent); background: rgba(75,62,152,0.03); }
+.nivel-card input:checked + label {
+  border-color: var(--accent); background: rgba(75,62,152,0.06);
+  box-shadow: 0 0 0 2px rgba(75,62,152,0.15);
+}
+.nivel-check {
+  width: 20px; height: 20px; flex-shrink: 0;
+  border: 1.5px solid var(--border); border-radius: 5px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .18s; background: var(--bg);
+}
+.nivel-card input:checked + label .nivel-check { background: var(--accent); border-color: var(--accent); }
+.nivel-check::after {
+  content: ''; width: 5px; height: 9px;
+  border: 2px solid white; border-top: none; border-left: none;
+  transform: rotate(45deg) translateY(-1px); display: none;
+}
+.nivel-card input:checked + label .nivel-check::after { display: block; }
+.nivel-text { font-size: 14px; font-weight: 600; color: var(--text); }
+.nivel-sub { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+
+/* ── GRADE GRID ── */
+.grade-section { margin-bottom: 20px; }
+.grade-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.grade-badge {
+  font-size: 10px; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; padding: 3px 10px; border-radius: 20px;
+  font-family: 'Outfit', sans-serif;
+}
+.grade-badge.pre { background: rgba(254,194,56,0.18); color: #9a6e00; border: 1px solid rgba(254,194,56,0.4); }
+.grade-badge.pri { background: rgba(75,62,152,0.10); color: var(--accent); border: 1px solid rgba(75,62,152,0.2); }
+.grade-badge.sec { background: rgba(244,116,50,0.14); color: #a44c1e; border: 1px solid rgba(244,116,50,0.35); }
+.grade-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+.grade-grid.grid-1 { grid-template-columns: 1fr; max-width: 260px; }
+@media(max-width:480px) { .grade-grid { grid-template-columns: 1fr 1fr; } }
+
+.grade-cell {
+  background: var(--bg); border: 1.5px solid var(--border);
+  border-radius: 8px; padding: 10px 10px; transition: border-color .18s;
+}
+.grade-cell:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(75,62,152,0.08); }
+.grade-cell-label {
+  font-size: 10.5px; font-weight: 700; letter-spacing: 0.4px;
+  text-transform: uppercase; color: var(--text); text-align: center;
+  margin-bottom: 8px; font-family: 'Outfit', sans-serif;
+}
+.grade-cell-split { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.grade-mini-label {
+  font-size: 9px; font-weight: 600; letter-spacing: 0.4px;
+  text-transform: uppercase; color: var(--text-muted); text-align: center; margin-bottom: 3px;
+}
+.grade-cell input {
+  border: 1.5px solid var(--border); background: var(--bg);
+  padding: 6px 2px; width: 100%; border-radius: 6px;
+}
+.subtotal-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(75,62,152,0.06); border: 1px solid rgba(75,62,152,0.15);
+  border-radius: 8px; padding: 10px 16px; margin-top: 10px; gap: 16px; flex-wrap: wrap;
+}
+.subtotal-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--accent); font-family: 'Outfit', sans-serif;
+}
+.subtotal-vals { display: flex; gap: 18px; }
+.subtotal-item { text-align: right; }
+.subtotal-item-label { font-size: 9.5px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.4px; }
+.subtotal-val { font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: var(--accent); }
+.total-card {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--accent); border-radius: 10px;
+  padding: 14px 20px; margin-top: 16px; gap: 16px; flex-wrap: wrap;
+  border-top: 3px solid var(--accent-yellow);
+}
+.total-card-group { text-align: right; }
+.total-card-label {
+  font-family: 'Outfit', sans-serif; font-size: 10px; font-weight: 700;
+  letter-spacing: 1.2px; text-transform: uppercase; color: rgba(255,255,255,0.75);
+}
+.total-card-val { font-family: 'Outfit', sans-serif; font-size: 26px; font-weight: 700; color: #fff; }
+
+/* ── NAV ── */
+.nav-row {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 28px; padding-top: 20px;
+  border-top: 1px solid var(--border); gap: 12px; flex-wrap: wrap;
+}
+.steps-dots { display: flex; gap: 6px; align-items: center; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--border); transition: all .3s; }
+.dot.done { background: rgba(75,62,152,0.35); }
+.dot.active { width: 22px; border-radius: 4px; background: var(--accent); }
+.btn-back {
+  background: transparent; border: 1.5px solid var(--border); color: var(--text-muted);
+  font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+  padding: 10px 20px; border-radius: 8px; cursor: pointer; transition: all .18s;
+}
+.btn-back:hover { border-color: var(--accent); color: var(--accent); background: rgba(75,62,152,0.04); }
+.btn-next, .btn-submit {
+  background: var(--accent); border: none; color: #fff;
+  font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600;
+  padding: 11px 26px; border-radius: 8px; cursor: pointer;
+  transition: background .18s; display: flex; align-items: center; gap: 8px;
+}
+.btn-next:hover, .btn-submit:hover { background: var(--accent-hover); }
+.btn-submit { min-width: 200px; justify-content: center; }
+.btn-submit.loading { opacity: 0.7; cursor: not-allowed; }
+.spinner {
+  width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff; border-radius: 50%;
+  animation: spin .7s linear infinite; display: none;
+}
+.btn-submit.loading .spinner { display: block; }
+.btn-submit.loading .btn-text { display: none; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── EMAIL NOTICE ── */
+.email-notice {
+  background: rgba(159,194,230,0.15); border: 1px solid rgba(159,194,230,0.4);
+  border-left: 3px solid var(--accent-blue); border-radius: 0 8px 8px 0;
+  padding: 12px 16px; margin-bottom: 20px;
+  font-size: 13px; color: var(--text-muted); line-height: 1.55;
+}
+.email-notice strong { color: var(--text); }
+
+/* ── SUCCESS ── */
+.success { display: none; text-align: center; padding: 60px 20px; }
+.success.show { display: block; animation: fadeUp .4s ease; }
+.success-check {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: rgba(46,157,87,0.1); border: 2px solid rgba(46,157,87,0.3);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 24px; font-size: 30px; color: var(--success);
+}
+.success-title {
+  font-family: 'Outfit', sans-serif; font-size: 26px; font-weight: 700;
+  color: var(--text); margin-bottom: 10px;
+}
+.success-sub { font-size: 14px; color: var(--text-muted); line-height: 1.7; max-width: 400px; margin: 0 auto 28px; }
+.success-card {
+  max-width: 420px; margin: 0 auto; background: var(--surface);
+  border: 1px solid var(--border); border-top: 3px solid var(--accent-yellow);
+  border-radius: 10px; padding: 18px 22px; text-align: left;
+}
+.success-card-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 13px;
+}
+.success-card-row:last-child { border-bottom: none; }
+.success-card-label { color: var(--text-muted); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+.success-card-val { font-weight: 600; color: var(--text); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <div class="logo-wrap">
+      <img src="https://lfpassarelli.github.io/apps/images/Logo_V_Corta_Blanco.png" alt="LIV">
+      <div class="logo-brand">
+        LIV Latam
+        <div class="logo-sub">Datos para Contrato · Colombia</div>
+      </div>
+    </div>
+    <div class="progress-block">
+      <div class="progress-meta">
+        <span class="progress-step-label" id="stepLabel">Paso 1 de 4</span>
+        <span class="progress-pct" id="stepName">Datos de la institución</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill" style="width:25%"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- INTRO -->
+  <div class="intro" id="formIntro">
+    <div class="intro-tag">Laboratorio Inteligencia de Vida</div>
+    <div class="intro-title">Información para elaboración de contrato</div>
+    <div class="intro-desc">Este formulario recopila los datos necesarios para la elaboración del Contrato LIV Colombia. La información será utilizada exclusivamente con fines administrativos y contractuales.</div>
+  </div>
+
+  <!-- STEP 1: DATOS DE LA INSTITUCIÓN -->
+  <div class="step active" id="step1">
+    <div class="section-card">
+      <div class="step-badge">01 / 04</div>
+      <div class="section-title">Datos de la institución</div>
+
+      <div class="fgroup">
+        <div class="flabel">Razón social completa <span class="frequired">*</span></div>
+        <input type="text" id="razon" placeholder="Nombre legal completo de la institución" autocomplete="organization">
+        <div class="ferror" id="err_razon">Este campo es obligatorio</div>
+      </div>
+
+      <div class="frow-2">
+        <div class="fgroup" style="margin-bottom:0">
+          <div class="flabel">Nombre comercial <span class="frequired">*</span></div>
+          <input type="text" id="nombre" placeholder="Nombre con el que opera">
+          <div class="ferror" id="err_nombre">Este campo es obligatorio</div>
+        </div>
+        <div class="fgroup" style="margin-bottom:0">
+          <div class="flabel">NIT <span class="frequired">*</span></div>
+          <input type="text" id="nit" placeholder="Ej: 900123456-7" maxlength="20"
+                 style="letter-spacing:1px;font-weight:600">
+          <div class="ferror" id="err_nit">Mínimo 6 caracteres y debe contener al menos un número</div>
+        </div>
+      </div>
+
+      <div class="fgroup" style="margin-bottom:0">
+        <div class="flabel">Domicilio completo <span class="frequired">*</span></div>
+        <textarea id="domicilio" rows="3" placeholder="Dirección, ciudad, departamento"></textarea>
+        <div class="ferror" id="err_domicilio">Este campo es obligatorio</div>
+      </div>
+    </div>
+
+    <div class="nav-row">
+      <div style="width:80px"></div>
+      <div class="steps-dots">
+        <div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      </div>
+      <button class="btn-next" onclick="goNext(1)">Continuar →</button>
+    </div>
+  </div>
+
+  <!-- STEP 2: REPRESENTANTES -->
+  <div class="step" id="step2">
+    <div class="section-card">
+      <div class="step-badge">02 / 04</div>
+      <div class="section-title">Representantes</div>
+
+      <div class="subsection-title"><span class="subsection-num">1</span>Representante legal</div>
+
+      <div class="frow-2">
+        <div class="fgroup" style="margin-bottom:0">
+          <div class="flabel">Nombre completo <span class="frequired">*</span></div>
+          <input type="text" id="rep_nombre" placeholder="Nombre y apellidos" autocomplete="name">
+          <div class="ferror" id="err_rep_nombre">Este campo es obligatorio</div>
+        </div>
+        <div class="fgroup" style="margin-bottom:0">
+          <div class="flabel">Cargo <span class="frequired">*</span></div>
+          <input type="text" id="rep_cargo" placeholder="Ej: Rector(a) / Director General">
+          <div class="ferror" id="err_rep_cargo">Este campo es obligatorio</div>
+        </div>
+      </div>
+
+      <div class="fgroup">
+        <div class="flabel">Cédula de ciudadanía / extranjería <span class="frequired">*</span></div>
+        <input type="text" id="cedula" placeholder="Número de documento" style="letter-spacing:0.8px">
+        <div class="ferror" id="err_cedula">Mínimo 6 caracteres y debe contener al menos un número</div>
+      </div>
+
+      <div class="frow-2" style="margin-bottom:0">
+        <div class="fgroup" style="margin-bottom:0">
+          <div class="flabel">Correo electrónico <span class="frequired">*</span></div>
+          <input type="email" id="rep_email" placeholder="correo@institución.edu.co" autocomplete="email">
+          <div class="ferror" id="err_rep_email">Correo electrónico inválido</div>
+        </div>
+        <div class="fgroup" style="margin-bottom:0">
+          <div class="flabel">Teléfono de contacto <span class="frequired">*</span></div>
+          <input type="tel" id="rep_tel" placeholder="300 123 4567">
+          <div class="fhint">Celular colombiano, 10 dígitos</div>
+          <div class="ferror" id="err_rep_tel">Ingresa un celular colombiano válido (10 dígitos, inicia en 3)</div>
+        </div>
+      </div>
+
+      <div class="subsection-title"><span class="subsection-num">2</span>Persona responsable por la implementación del programa LIV</div>
+      <div class="fhint" style="margin-bottom:14px;margin-top:-6px">Persona responsable del proyecto LIV dentro del colegio</div>
+
+      <div class="fgroup">
+        <div class="flabel">Nombre completo <span class="frequired">*</span></div>
+        <input type="text" id="focal_nombre" placeholder="Nombre y apellidos">
+        <div class="ferror" id="err_focal_nombre">Este campo es obligatorio</div>
+      </div>
+      <div class="frow-2" style="margin-bottom:0">
+        <div class="fgroup" style="margin-bottom:0">
+          <div class="flabel">Correo electrónico</div>
+          <input type="email" id="focal_email" placeholder="correo@institución.edu.co">
+        </div>
+        <div class="fgroup" style="margin-bottom:0">
+          <div class="flabel">Teléfono</div>
+          <input type="tel" id="focal_tel" placeholder="300 123 4567">
+        </div>
+      </div>
+      <div class="ferror" id="err_focal_contacto">Ingresa al menos un correo o teléfono de contacto</div>
+
+      <div class="subsection-title"><span class="subsection-num">3</span>Contacto administrativo</div>
+      <div class="fhint" style="margin-bottom:14px;margin-top:-6px">Responsable por temas financieros y administrativos del contrato</div>
+
+      <label class="same-person-card" for="admin_mismo">
+        <input type="checkbox" id="admin_mismo" onchange="toggleAdminMismo()">
+        <div>
+          <div class="same-person-text">Es la misma persona responsable por el proyecto LIV</div>
+          <div class="same-person-sub">Marca esta opción si es la misma persona indicada en la sección anterior</div>
+        </div>
+      </label>
+
+      <div id="admin_fields">
+        <div class="fgroup">
+          <div class="flabel">Nombre completo <span class="frequired">*</span></div>
+          <input type="text" id="admin_nombre" placeholder="Nombre y apellidos">
+          <div class="ferror" id="err_admin_nombre">Este campo es obligatorio</div>
+        </div>
+        <div class="frow-2" style="margin-bottom:0">
+          <div class="fgroup" style="margin-bottom:0">
+            <div class="flabel">Correo electrónico</div>
+            <input type="email" id="admin_email" placeholder="correo@institución.edu.co">
+          </div>
+          <div class="fgroup" style="margin-bottom:0">
+            <div class="flabel">Teléfono</div>
+            <input type="tel" id="admin_tel" placeholder="300 123 4567">
+          </div>
+        </div>
+        <div class="ferror" id="err_admin_contacto">Ingresa al menos un correo o teléfono de contacto</div>
+      </div>
+
+      <div class="subsection-title"><span class="subsection-num">4</span>Contacto recepción de materiales</div>
+      <div class="fhint" style="margin-bottom:14px;margin-top:-6px">Responsable por la recepción de los materiales físicos</div>
+
+      <label class="same-person-card" for="recepcion_mismo">
+        <input type="checkbox" id="recepcion_mismo" onchange="toggleRecepcionMismo()">
+        <div>
+          <div class="same-person-text">Es la misma persona responsable por el proyecto LIV</div>
+          <div class="same-person-sub">Marca esta opción si es la misma persona indicada arriba</div>
+        </div>
+      </label>
+
+      <div id="recepcion_fields">
+        <div class="fgroup">
+          <div class="flabel">Nombre completo <span class="frequired">*</span></div>
+          <input type="text" id="recepcion_nombre" placeholder="Nombre y apellidos">
+          <div class="ferror" id="err_recepcion_nombre">Este campo es obligatorio</div>
+        </div>
+        <div class="frow-2" style="margin-bottom:0">
+          <div class="fgroup" style="margin-bottom:0">
+            <div class="flabel">Correo electrónico</div>
+            <input type="email" id="recepcion_email" placeholder="correo@institución.edu.co">
+          </div>
+          <div class="fgroup" style="margin-bottom:0">
+            <div class="flabel">Teléfono</div>
+            <input type="tel" id="recepcion_tel" placeholder="300 123 4567">
+          </div>
+        </div>
+        <div class="ferror" id="err_recepcion_contacto">Ingresa al menos un correo o teléfono de contacto</div>
+      </div>
+    </div>
+
+    <div class="nav-row">
+      <button class="btn-back" onclick="goBack(2)">← Anterior</button>
+      <div class="steps-dots">
+        <div class="dot done"></div><div class="dot active"></div><div class="dot"></div><div class="dot"></div>
+      </div>
+      <button class="btn-next" onclick="goNext(2)">Continuar →</button>
+    </div>
+  </div>
+
+  <!-- STEP 3: ALUMNOS -->
+  <div class="step" id="step3">
+    <div class="section-card">
+      <div class="step-badge">03 / 04</div>
+      <div class="section-title">Niveles y distribución de alumnos</div>
+
+      <div class="email-notice" style="margin-bottom:20px">
+        <strong>¿Qué es un "grupo"?</strong> Es cada salón o paralelo dentro de un mismo grado. Por ejemplo, si 1° grado tiene 2 salones (1°A y 1°B), el número de grupos es <strong>2</strong>. Este dato nos permite calcular cuánto material físico enviar por salón.
+      </div>
+
+      <div class="fgroup">
+        <div class="flabel">Niveles educativos <span class="frequired">*</span></div>
+        <div class="nivel-grid">
+          <div class="nivel-card">
+            <input type="checkbox" id="nivel_pre" value="Preescolar" onchange="toggleNivel()">
+            <label for="nivel_pre">
+              <span class="nivel-check"></span>
+              <div><div class="nivel-text">Preescolar</div><div class="nivel-sub">Pre-jardín, Jardín, Transición</div></div>
+            </label>
+          </div>
+          <div class="nivel-card">
+            <input type="checkbox" id="nivel_pri" value="Primaria" onchange="toggleNivel()">
+            <label for="nivel_pri">
+              <span class="nivel-check"></span>
+              <div><div class="nivel-text">Primaria</div><div class="nivel-sub">1° a 5° grado</div></div>
+            </label>
+          </div>
+          <div class="nivel-card">
+            <input type="checkbox" id="nivel_sec" value="Secundaria" onchange="toggleNivel()">
+            <label for="nivel_sec">
+              <span class="nivel-check"></span>
+              <div><div class="nivel-text">Secundaria</div><div class="nivel-sub">6° grado</div></div>
+            </label>
+          </div>
+        </div>
+        <div class="ferror" id="err_niveles">Selecciona al menos un nivel educativo</div>
+      </div>
+
+      <!-- PREESCOLAR -->
+      <div class="grade-section" id="sec_pre" style="display:none">
+        <div class="grade-header"><span class="grade-badge pre">Preescolar</span></div>
+        <div class="grade-grid">
+          <div class="grade-cell">
+            <div class="grade-cell-label">Pre-jardín</div>
+            <div class="grade-cell-split">
+              <div><div class="grade-mini-label">Alumnos</div><input type="number" id="pj_alum" value="0" min="0" max="999" oninput="calcSubs()"></div>
+              <div><div class="grade-mini-label">Grupos</div><input type="number" id="pj_grupos" value="0" min="0" max="99" oninput="calcSubs()"></div>
+            </div>
+          </div>
+          <div class="grade-cell">
+            <div class="grade-cell-label">Jardín</div>
+            <div class="grade-cell-split">
+              <div><div class="grade-mini-label">Alumnos</div><input type="number" id="jar_alum" value="0" min="0" max="999" oninput="calcSubs()"></div>
+              <div><div class="grade-mini-label">Grupos</div><input type="number" id="jar_grupos" value="0" min="0" max="99" oninput="calcSubs()"></div>
+            </div>
+          </div>
+          <div class="grade-cell">
+            <div class="grade-cell-label">Transición</div>
+            <div class="grade-cell-split">
+              <div><div class="grade-mini-label">Alumnos</div><input type="number" id="tra_alum" value="0" min="0" max="999" oninput="calcSubs()"></div>
+              <div><div class="grade-mini-label">Grupos</div><input type="number" id="tra_grupos" value="0" min="0" max="99" oninput="calcSubs()"></div>
+            </div>
+          </div>
+        </div>
+        <div class="subtotal-bar">
+          <span class="subtotal-label">Subtotal preescolar</span>
+          <div class="subtotal-vals">
+            <div class="subtotal-item"><div class="subtotal-item-label">Alumnos</div><div class="subtotal-val" id="sub_pre_alum">0</div></div>
+            <div class="subtotal-item"><div class="subtotal-item-label">Grupos</div><div class="subtotal-val" id="sub_pre_grupos">0</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRIMARIA -->
+      <div class="grade-section" id="sec_pri" style="display:none">
+        <div class="grade-header"><span class="grade-badge pri">Primaria</span></div>
+        <div class="grade-grid">
+          <div class="grade-cell">
+            <div class="grade-cell-label">1° grado</div>
+            <div class="grade-cell-split">
+              <div><div class="grade-mini-label">Alumnos</div><input type="number" id="pri1_alum" value="0" min="0" max="999" oninput="calcSubs()"></div>
+              <div><div class="grade-mini-label">Grupos</div><input type="number" id="pri1_grupos" value="0" min="0" max="99" oninput="calcSubs()"></div>
+            </div>
+          </div>
+          <div class="grade-cell">
+            <div class="grade-cell-label">2° grado</div>
+            <div class="grade-cell-split">
+              <div><div class="grade-mini-label">Alumnos</div><input type="number" id="pri2_alum" value="0" min="0" max="999" oninput="calcSubs()"></div>
+              <div><div class="grade-mini-label">Grupos</div><input type="number" id="pri2_grupos" value="0" min="0" max="99" oninput="calcSubs()"></div>
+            </div>
+          </div>
+          <div class="grade-cell">
+            <div class="grade-cell-label">3° grado</div>
+            <div class="grade-cell-split">
+              <div><div class="grade-mini-label">Alumnos</div><input type="number" id="pri3_alum" value="0" min="0" max="999" oninput="calcSubs()"></div>
+              <div><div class="grade-mini-label">Grupos</div><input type="number" id="pri3_grupos" value="0" min="0" max="99" oninput="calcSubs()"></div>
+            </div>
+          </div>
+          <div class="grade-cell">
+            <div class="grade-cell-label">4° grado</div>
+            <div class="grade-cell-split">
+              <div><div class="grade-mini-label">Alumnos</div><input type="number" id="pri4_alum" value="0" min="0" max="999" oninput="calcSubs()"></div>
+              <div><div class="grade-mini-label">Grupos</div><input type="number" id="pri4_grupos" value="0" min="0" max="99" oninput="calcSubs()"></div>
+            </div>
+          </div>
+          <div class="grade-cell">
+            <div class="grade-cell-label">5° grado</div>
+            <div class="grade-cell-split">
+              <div><div class="grade-mini-label">Alumnos</div><input type="number" id="pri5_alum" value="0" min="0" max="999" oninput="calcSubs()"></div>
+              <div><div class="grade-mini-label">Grupos</div><input type="number" id="pri5_grupos" value="0" min="0" max="99" oninput="calcSubs()"></div>
+            </div>
+          </div>
+        </div>
+        <div class="subtotal-bar">
+          <span class="subtotal-label">Subtotal primaria</span>
+          <div class="subtotal-vals">
+            <div class="subtotal-item"><div class="subtotal-item-label">Alumnos</div><div class="subtotal-val" id="sub_pri_alum">0</div></div>
+            <div class="subtotal-item"><div class="subtotal-item-label">Grupos</div><div class="subtotal-val" id="sub_pri_grupos">0</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECUNDARIA -->
+      <div class="grade-section" id="sec_sec" style="display:none">
+        <div class="grade-header"><span class="grade-badge sec">Secundaria</span></div>
+        <div class="grade-grid grid-1">
+          <div class="grade-cell">
+            <div class="grade-cell-label">6° grado</div>
+            <div class="grade-cell-split">
+              <div><div class="grade-mini-label">Alumnos</div><input type="number" id="sec6_alum" value="0" min="0" max="999" oninput="calcSubs()"></div>
+              <div><div class="grade-mini-label">Grupos</div><input type="number" id="sec6_grupos" value="0" min="0" max="99" oninput="calcSubs()"></div>
+            </div>
+          </div>
+        </div>
+        <div class="subtotal-bar">
+          <span class="subtotal-label">Subtotal secundaria</span>
+          <div class="subtotal-vals">
+            <div class="subtotal-item"><div class="subtotal-item-label">Alumnos</div><div class="subtotal-val" id="sub_sec_alum">0</div></div>
+            <div class="subtotal-item"><div class="subtotal-item-label">Grupos</div><div class="subtotal-val" id="sub_sec_grupos">0</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="total-card" id="totalCard" style="display:none">
+        <div class="total-card-group">
+          <div class="total-card-label">Total alumnos</div>
+          <div class="total-card-val" id="totalAlumnos">0</div>
+        </div>
+        <div class="total-card-group">
+          <div class="total-card-label">Total grupos</div>
+          <div class="total-card-val" id="totalGrupos">0</div>
+        </div>
+      </div>
+      <div class="ferror" id="err_alumnos">Ingresa al menos 1 alumno para continuar</div>
+    </div>
+
+    <div class="nav-row">
+      <button class="btn-back" onclick="goBack(3)">← Anterior</button>
+      <div class="steps-dots">
+        <div class="dot done"></div><div class="dot done"></div><div class="dot active"></div><div class="dot"></div>
+      </div>
+      <button class="btn-next" onclick="goNext(3)">Continuar →</button>
+    </div>
+  </div>
+
+  <!-- STEP 4: ENTREGA -->
+  <div class="step" id="step4">
+    <div class="section-card">
+      <div class="step-badge">04 / 04</div>
+      <div class="section-title">Entrega y fecha de inicio</div>
+
+      <div class="fgroup">
+        <div class="flabel">Fecha estimada de inicio de clases <span class="frequired">*</span></div>
+        <div class="frow-3" style="margin-bottom:0">
+          <div>
+            <div class="flabel" style="font-size:10px">Día</div>
+            <input type="number" id="fecha_day" placeholder="DD" min="1" max="31" style="text-align:center">
+          </div>
+          <div>
+            <div class="flabel" style="font-size:10px">Mes</div>
+            <input type="number" id="fecha_month" placeholder="MM" min="1" max="12" style="text-align:center">
+          </div>
+          <div>
+            <div class="flabel" style="font-size:10px">Año</div>
+            <input type="number" id="fecha_year" placeholder="AAAA" min="2026" max="2027" style="text-align:center">
+          </div>
+        </div>
+        <div class="fhint">Ciclo escolar 2026</div>
+        <div class="ferror" id="err_fecha">Ingresa una fecha válida (día, mes y año)</div>
+      </div>
+
+      <div class="fgroup" style="margin-bottom:0">
+        <div class="flabel">Dirección para entrega de materiales <span class="frequired">*</span></div>
+        <textarea id="entrega" rows="3" placeholder="Dirección, ciudad, departamento&#10;(puede diferir del domicilio anterior)"></textarea>
+        <div class="fhint">Si coincide con el domicilio de la institución, repite la dirección</div>
+        <div class="ferror" id="err_entrega">Este campo es obligatorio</div>
+      </div>
+    </div>
+
+    <div class="email-notice">
+      El correo <strong id="emailDisplay">—</strong> quedará registrado con esta respuesta.
+    </div>
+
+    <div class="nav-row">
+      <button class="btn-back" onclick="goBack(4)">← Anterior</button>
+      <div class="steps-dots">
+        <div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot active"></div>
+      </div>
+      <button class="btn-submit" id="btnSubmit" onclick="submitForm()">
+        <span class="btn-text">Enviar información →</span>
+        <div class="spinner"></div>
+      </button>
+    </div>
+  </div>
+
+  <!-- SUCCESS -->
+  <div class="success" id="successScreen">
+    <div class="success-check">✓</div>
+    <div class="success-title">¡Información enviada!</div>
+    <div class="success-sub">Recibimos tus datos correctamente. El equipo LIV procesará el contrato y se pondrá en contacto contigo en los próximos días hábiles.</div>
+    <div class="success-card">
+      <div class="success-card-row"><span class="success-card-label">Institución</span><span class="success-card-val" id="s_nombre">—</span></div>
+      <div class="success-card-row"><span class="success-card-label">NIT</span><span class="success-card-val" id="s_nit">—</span></div>
+      <div class="success-card-row"><span class="success-card-label">Total de alumnos</span><span class="success-card-val" id="s_total">—</span></div>
+      <div class="success-card-row"><span class="success-card-label">Inicio de clases</span><span class="success-card-val" id="s_fecha">—</span></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzENGe-ttcJmWXbGt_CbkJMLPQU3FJ65d-LELUKKdwX9ibOxuNDrWVSB7VzrasP_gZW/exec';
+
+const g = id => document.getElementById(id);
+const val = id => g(id) ? g(id).value.trim() : '';
+
+const STEP_NAMES = ['','Datos de la institución','Representantes','Niveles y alumnos','Entrega y fecha'];
+let currentStep = 1;
+const TOTAL = 4;
+
+function updateProgress() {
+  const pct = (currentStep / TOTAL) * 100;
+  g('progressFill').style.width = pct + '%';
+  g('stepLabel').textContent = 'Paso ' + currentStep + ' de ' + TOTAL;
+  g('stepName').textContent = STEP_NAMES[currentStep] || '';
+}
+
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  g('step' + n).classList.add('active');
+  g('formIntro').style.display = n === 1 ? '' : 'none';
+  currentStep = n;
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showErr(id, show, msg) {
+  const el = g('err_' + id);
+  if (el) { el.classList.toggle('show', show); if (msg) el.textContent = msg; }
+  const inp = g(id);
+  if (inp) inp.classList.toggle('error', show);
+}
+
+function validEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); }
+
+// NIT y Cédula: mínimo 6 chars, deve conter pelo menos 1 número
+function validCode(v) {
+  const s = v.trim();
+  return s.length >= 6 && /[0-9]/.test(s);
+}
+
+// Celular colombiano: 10 dígitos, empieza en 3
+function validPhoneCO(v) {
+  const digits = v.replace(/\D/g,'');
+  return digits.length === 10 && digits.startsWith('3');
+}
+
+// Al menos un dato de contacto (email o teléfono) para contactos secundarios
+function validContact(prefix) {
+  const email = val(prefix + '_email');
+  const tel = val(prefix + '_tel');
+  return !!email || !!tel;
+}
+
+function validateStep(n) {
+  let ok = true;
+
+  if (n === 1) {
+    ['razon','nombre','domicilio'].forEach(id => {
+      const bad = !val(id); showErr(id, bad); if (bad) ok = false;
+    });
+    const nitBad = !validCode(val('nit'));
+    showErr('nit', nitBad, 'Mínimo 6 caracteres y debe contener al menos un número');
+    if (nitBad) ok = false;
+  }
+
+  if (n === 2) {
+    ['rep_nombre','rep_cargo'].forEach(id => {
+      const bad = !val(id); showErr(id, bad); if (bad) ok = false;
+    });
+    const cedulaBad = !validCode(val('cedula'));
+    showErr('cedula', cedulaBad, 'Mínimo 6 caracteres y debe contener al menos un número');
+    if (cedulaBad) ok = false;
+    const emailBad = !validEmail(val('rep_email'));
+    showErr('rep_email', emailBad, 'Correo electrónico inválido');
+    if (emailBad) ok = false;
+    const telBad = !validPhoneCO(val('rep_tel'));
+    showErr('rep_tel', telBad, 'Ingresa un celular colombiano válido (10 dígitos, inicia en 3)');
+    if (telBad) ok = false;
+
+    const focalNombreBad = !val('focal_nombre');
+    showErr('focal_nombre', focalNombreBad); if (focalNombreBad) ok = false;
+    const focalContactoBad = !validContact('focal');
+    g('err_focal_contacto').classList.toggle('show', focalContactoBad);
+    if (focalContactoBad) ok = false;
+
+    if (!g('admin_mismo').checked) {
+      const adminNombreBad = !val('admin_nombre');
+      showErr('admin_nombre', adminNombreBad); if (adminNombreBad) ok = false;
+      const adminContactoBad = !validContact('admin');
+      g('err_admin_contacto').classList.toggle('show', adminContactoBad);
+      if (adminContactoBad) ok = false;
+    }
+
+    if (!g('recepcion_mismo').checked) {
+      const recepcionNombreBad = !val('recepcion_nombre');
+      showErr('recepcion_nombre', recepcionNombreBad); if (recepcionNombreBad) ok = false;
+      const recepcionContactoBad = !validContact('recepcion');
+      g('err_recepcion_contacto').classList.toggle('show', recepcionContactoBad);
+      if (recepcionContactoBad) ok = false;
+    }
+  }
+
+  if (n === 3) {
+    const hasPre = g('nivel_pre').checked, hasPri = g('nivel_pri').checked, hasSec = g('nivel_sec').checked;
+    if (!hasPre && !hasPri && !hasSec) { g('err_niveles').classList.add('show'); ok = false; }
+    else g('err_niveles').classList.remove('show');
+    const tot = parseInt(g('totalAlumnos').textContent) || 0;
+    if ((hasPre || hasPri || hasSec) && tot === 0) { g('err_alumnos').classList.add('show'); ok = false; }
+    else g('err_alumnos').classList.remove('show');
+  }
+
+  if (n === 4) {
+    const day   = parseInt(val('fecha_day'))   || 0;
+    const month = parseInt(val('fecha_month')) || 0;
+    const year  = parseInt(val('fecha_year'))  || 0;
+    const fechaBad = !day || !month || !year || day > 31 || month > 12 || year < 2026;
+    showErr('fecha', fechaBad, 'Ingresa una fecha válida (día, mes y año)');
+    if (fechaBad) ok = false;
+    const entBad = !val('entrega');        showErr('entrega', entBad); if (entBad) ok = false;
+  }
+
+  return ok;
+}
+
+function goNext(from) {
+  if (!validateStep(from)) return;
+  showStep(from + 1);
+  if (from === 2) g('emailDisplay').textContent = val('rep_email');
+}
+function goBack(from) { if (from > 1) showStep(from - 1); }
+
+function toggleAdminMismo() {
+  const mismo = g('admin_mismo').checked;
+  g('admin_fields').style.display = mismo ? 'none' : '';
+  if (mismo) {
+    g('err_admin_nombre').classList.remove('show');
+    g('err_admin_contacto').classList.remove('show');
+  }
+}
+
+function toggleRecepcionMismo() {
+  const mismo = g('recepcion_mismo').checked;
+  g('recepcion_fields').style.display = mismo ? 'none' : '';
+  if (mismo) {
+    g('err_recepcion_nombre').classList.remove('show');
+    g('err_recepcion_contacto').classList.remove('show');
+  }
+}
+
+function toggleNivel() {
+  const hasPre = g('nivel_pre').checked, hasPri = g('nivel_pri').checked, hasSec = g('nivel_sec').checked;
+  g('sec_pre').style.display = hasPre ? '' : 'none';
+  g('sec_pri').style.display = hasPri ? '' : 'none';
+  g('sec_sec').style.display = hasSec ? '' : 'none';
+  g('totalCard').style.display = (hasPre || hasPri || hasSec) ? '' : 'none';
+  g('err_niveles').classList.remove('show');
+  calcSubs();
+}
+
+function calcSubs() {
+  const hasPre = g('nivel_pre').checked, hasPri = g('nivel_pri').checked, hasSec = g('nivel_sec').checked;
+  const n = id => parseInt(g(id).value) || 0;
+
+  const preAlum = hasPre ? n('pj_alum')+n('jar_alum')+n('tra_alum') : 0;
+  const preGrupos = hasPre ? n('pj_grupos')+n('jar_grupos')+n('tra_grupos') : 0;
+  const priAlum = hasPri ? n('pri1_alum')+n('pri2_alum')+n('pri3_alum')+n('pri4_alum')+n('pri5_alum') : 0;
+  const priGrupos = hasPri ? n('pri1_grupos')+n('pri2_grupos')+n('pri3_grupos')+n('pri4_grupos')+n('pri5_grupos') : 0;
+  const secAlum = hasSec ? n('sec6_alum') : 0;
+  const secGrupos = hasSec ? n('sec6_grupos') : 0;
+
+  if (hasPre) { g('sub_pre_alum').textContent = preAlum; g('sub_pre_grupos').textContent = preGrupos; }
+  if (hasPri) { g('sub_pri_alum').textContent = priAlum; g('sub_pri_grupos').textContent = priGrupos; }
+  if (hasSec) { g('sub_sec_alum').textContent = secAlum; g('sub_sec_grupos').textContent = secGrupos; }
+
+  g('totalAlumnos').textContent = preAlum + priAlum + secAlum;
+  g('totalGrupos').textContent = preGrupos + priGrupos + secGrupos;
+}
+
+// NIT auto uppercase (no aplica realmente para NIT numérico, pero se deja consistente con cédula)
+g('nit').addEventListener('input', function(){
+  this.value = this.value.toUpperCase();
+});
+
+async function submitForm() {
+  if (!validateStep(4)) return;
+  const btn = g('btnSubmit');
+  btn.classList.add('loading'); btn.disabled = true;
+
+  const hasPre = g('nivel_pre').checked;
+  const hasPri = g('nivel_pri').checked;
+  const hasSec = g('nivel_sec').checked;
+  const niveles = [hasPre ? 'Preescolar' : '', hasPri ? 'Primaria' : '', hasSec ? 'Secundaria' : ''].filter(Boolean).join(', ');
+
+  const day   = val('fecha_day').padStart(2,'0');
+  const month = val('fecha_month').padStart(2,'0');
+  const year  = val('fecha_year');
+  const fecha = `${day}/${month}/${year}`;
+
+  const adminMismo = g('admin_mismo').checked;
+  const recepcionMismo = g('recepcion_mismo').checked;
+
+  // La persona responsable por la implementación siempre se captura directamente
+  const focalNombreFinal = val('focal_nombre');
+  const focalEmailFinal  = val('focal_email');
+  const focalTelFinal    = val('focal_tel');
+
+  const payload = {
+    razon:       val('razon'),
+    nombre:      val('nombre'),
+    nit:         val('nit').toUpperCase(),
+    domicilio:   val('domicilio'),
+    rep_nombre:  val('rep_nombre'),
+    rep_cargo:   val('rep_cargo'),
+    cedula:      val('cedula'),
+    rep_email:   val('rep_email'),
+    rep_tel:     val('rep_tel'),
+    focal_nombre: focalNombreFinal,
+    focal_email:  focalEmailFinal,
+    focal_tel:    focalTelFinal,
+    admin_mismo: adminMismo ? 'Sí' : 'No',
+    admin_nombre: adminMismo ? focalNombreFinal : val('admin_nombre'),
+    admin_email:  adminMismo ? focalEmailFinal  : val('admin_email'),
+    admin_tel:    adminMismo ? focalTelFinal    : val('admin_tel'),
+    recepcion_mismo: recepcionMismo ? 'Sí' : 'No',
+    recepcion_nombre: recepcionMismo ? focalNombreFinal : val('recepcion_nombre'),
+    recepcion_email:  recepcionMismo ? focalEmailFinal  : val('recepcion_email'),
+    recepcion_tel:    recepcionMismo ? focalTelFinal    : val('recepcion_tel'),
+    responsable: [focalNombreFinal, focalEmailFinal, focalTelFinal].filter(Boolean).join(' — '),
+    niveles:     niveles,
+    pj_alum:  hasPre ? g('pj_alum').value : '0',   pj_grupos:  hasPre ? g('pj_grupos').value : '0',
+    jar_alum: hasPre ? g('jar_alum').value : '0',  jar_grupos: hasPre ? g('jar_grupos').value : '0',
+    tra_alum: hasPre ? g('tra_alum').value : '0',  tra_grupos: hasPre ? g('tra_grupos').value : '0',
+    pri1_alum: hasPri ? g('pri1_alum').value : '0', pri1_grupos: hasPri ? g('pri1_grupos').value : '0',
+    pri2_alum: hasPri ? g('pri2_alum').value : '0', pri2_grupos: hasPri ? g('pri2_grupos').value : '0',
+    pri3_alum: hasPri ? g('pri3_alum').value : '0', pri3_grupos: hasPri ? g('pri3_grupos').value : '0',
+    pri4_alum: hasPri ? g('pri4_alum').value : '0', pri4_grupos: hasPri ? g('pri4_grupos').value : '0',
+    pri5_alum: hasPri ? g('pri5_alum').value : '0', pri5_grupos: hasPri ? g('pri5_grupos').value : '0',
+    sec6_alum: hasSec ? g('sec6_alum').value : '0', sec6_grupos: hasSec ? g('sec6_grupos').value : '0',
+    fecha:       fecha,
+    entrega:     val('entrega'),
+  };
+
+  try {
+    await fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+  } catch(e) { /* no-cors expected */ }
+
+  // ── SUCESSO ──
+  document.querySelectorAll('.step').forEach(s => s.style.display = 'none');
+  g('formIntro').style.display = 'none';
+  g('progressFill').style.width = '100%';
+  g('stepLabel').textContent = 'Completado';
+  g('stepName').textContent = '¡Datos enviados!';
+  g('s_nombre').textContent = val('nombre');
+  g('s_nit').textContent    = val('nit').toUpperCase();
+  g('s_total').textContent  = g('totalAlumnos').textContent + ' alumnos';
+  g('s_fecha').textContent  = fecha;
+  g('successScreen').classList.add('show');
+  btn.classList.remove('loading'); btn.disabled = false;
+}
+
+updateProgress();
+</script>
+</body>
+</html>
