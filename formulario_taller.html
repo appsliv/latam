@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inscripción Taller LIV</title>
+  <!--
+    ============================================================
+    CÓMO CREAR UN NUEVO EVENTO:
+    1. Edite las 5 constantes en el bloque <script> "CONFIG DEL EVENTO"
+       al final de este archivo (APPS_SCRIPT_URL, EVENTO_FECHA, etc).
+    2. Suba (commit) este archivo actualizado al repositorio de GitHub.
+    3. Listo — no es necesario redeployar nada en Apps Script,
+       solo si cambian los campos del formulario.
+    ============================================================
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --purple: #4B3E98;
+      --purple-dark: #3d3280;
+      --surface: #F7F6FD;
+      --border: #DDD9F5;
+      --text: #1A1530;
+      --muted: #6B6490;
+      --yellow: #FEC238;
+      --orange: #F47432;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--surface);
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    .header {
+      background: var(--purple);
+      color: #fff;
+      padding: 28px 20px 24px;
+      text-align: center;
+    }
+
+    .header .logo-img {
+      height: 52px;
+      margin-bottom: 14px;
+    }
+
+    .header h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 20px 16px 40px;
+    }
+
+    .event-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-top: -20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 14px rgba(75, 62, 152, 0.08);
+    }
+
+    .event-card .row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14.5px;
+      padding: 6px 0;
+    }
+    .event-card .row:not(:last-child) {
+      border-bottom: 1px solid var(--surface);
+    }
+    .event-card .icon { font-size: 16px; }
+    .event-card .label { color: var(--muted); }
+    .event-card strong { color: var(--text); }
+
+    .about-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+    }
+    .about-card p {
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: var(--muted);
+      margin: 0;
+    }
+    .about-card p + p { margin-top: 10px; }
+
+    .form-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 20px;
+    }
+
+    .form-card h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 17px;
+      margin: 0 0 18px;
+      color: var(--text);
+    }
+
+    label {
+      display: block;
+      font-size: 13.5px;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+    label .req { color: var(--orange); }
+
+    .field { margin-bottom: 16px; }
+
+    .helper {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 5px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"] {
+      width: 100%;
+      padding: 11px 13px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14.5px;
+      color: var(--text);
+      background: var(--surface);
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    input:focus {
+      outline: none;
+      border-color: var(--purple);
+      box-shadow: 0 0 0 3px rgba(75, 62, 152, 0.12);
+      background: #fff;
+    }
+    input.error { border-color: #E4572E; }
+
+    .error-msg {
+      color: #E4572E;
+      font-size: 12px;
+      margin-top: 5px;
+      display: none;
+    }
+
+    button.submit-btn {
+      width: 100%;
+      background: var(--purple);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 13px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 6px;
+      transition: background 0.15s;
+    }
+    button.submit-btn:hover { background: var(--purple-dark); }
+    button.submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .server-error {
+      background: #FFF0EE;
+      border: 1px solid #F3C1B7;
+      color: #B33A22;
+      font-size: 13px;
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-bottom: 14px;
+      display: none;
+    }
+
+    /* Success screen */
+    .success-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 36px 24px;
+      text-align: center;
+      display: none;
+    }
+    .success-card .check {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #E9F7EF;
+      color: #2E9F5B;
+      font-size: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .success-card h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 19px;
+      margin: 0 0 8px;
+    }
+    .success-card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <img class="logo-img" src="https://lfpassarelli.github.io/apps/images/Logo_V_Corta_Blanco.png" alt="LIV">
+    <h1>Inscripción al Taller LIV</h1>
+  </div>
+
+  <div class="container">
+
+    <div class="about-card">
+      <p>El taller será un espacio práctico para conocer y experimentar de primera mano los recursos, dinámicas y herramientas que propone LIV para trabajar la educación socioemocional dentro del espacio curricular.</p>
+      <p>La idea es que quienes participen puedan vivir parte de la experiencia que luego sucede en el aula y comprender mejor cómo se implementa el programa.</p>
+    </div>
+
+    <div class="event-card">
+      <div class="row"><span class="icon">📅</span><span class="label">Fecha:</span> <strong id="txtFecha"></strong></div>
+      <div class="row"><span class="icon">🕘</span><span class="label">Horario:</span> <strong id="txtHorario"></strong></div>
+      <div class="row"><span class="icon">📍</span><span class="label">Lugar:</span> <strong id="txtLugar"></strong></div>
+    </div>
+
+    <div class="form-card" id="formCard">
+      <h2>Completa tus datos</h2>
+
+      <div class="server-error" id="serverError"></div>
+
+      <form id="regForm" novalidate>
+        <div class="field">
+          <label for="nombre">Nombre completo <span class="req">*</span></label>
+          <input type="text" id="nombre" name="nombre" autocomplete="name">
+          <div class="error-msg" id="err-nombre">Por favor ingresa tu nombre completo.</div>
+        </div>
+
+        <div class="field">
+          <label for="colegio">Colegio <span class="req">*</span></label>
+          <input type="text" id="colegio" name="colegio" autocomplete="organization">
+          <div class="error-msg" id="err-colegio">Por favor ingresa el nombre de tu colegio.</div>
+        </div>
+
+        <div class="field">
+          <label for="cargo">Cargo <span class="req">*</span></label>
+          <input type="text" id="cargo" name="cargo" autocomplete="organization-title">
+          <div class="error-msg" id="err-cargo">Por favor ingresa tu cargo.</div>
+        </div>
+
+        <div class="field">
+          <label for="email">Correo electrónico <span class="req">*</span></label>
+          <input type="email" id="email" name="email" autocomplete="email">
+          <div class="error-msg" id="err-email">Por favor ingresa un correo electrónico válido.</div>
+        </div>
+
+        <div class="field">
+          <label for="telefono">Teléfono (WhatsApp) <span class="req">*</span></label>
+          <input type="tel" id="telefono" name="telefono" autocomplete="tel">
+          <div class="helper">Lo usaremos para enviarte información y recordatorios sobre el taller.</div>
+          <div class="error-msg" id="err-telefono">Por favor ingresa un número de teléfono.</div>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">Confirmar inscripción</button>
+      </form>
+    </div>
+
+    <div class="success-card" id="successCard">
+      <div class="check">✓</div>
+      <h2>¡Inscripción confirmada!</h2>
+      <p>Nos vemos el <strong id="txtFechaSuccess"></strong> en <span id="txtLugarSuccess"></span>.</p>
+    </div>
+
+  </div>
+
+  <script>
+    /* ============================================================
+       CONFIG DEL EVENTO — editar esto en cada nuevo workshop
+       (debe coincidir con las constantes EVENTO_* en Code.gs)
+       ============================================================ */
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxV9MWgRnwB_UXSheU2nhPqXsta7zey-5KwGXplxwCdBq1x2XiN5bUwL0j3xeDRLKk/exec';
+    const EVENTO_FECHA   = 'Miércoles 26 de agosto';
+    const EVENTO_HORARIO = '9:00 a.m. – 11:00 a.m.';
+    const EVENTO_LUGAR   = 'Colegio Colombo Británico de Envigado';
+    /* ============================================================ */
+
+    document.getElementById('txtFecha').textContent = EVENTO_FECHA;
+    document.getElementById('txtHorario').textContent = EVENTO_HORARIO;
+    document.getElementById('txtLugar').textContent = EVENTO_LUGAR;
+    document.getElementById('txtFechaSuccess').textContent = EVENTO_FECHA;
+    document.getElementById('txtLugarSuccess').textContent = EVENTO_LUGAR;
+
+    const form = document.getElementById('regForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const formCard = document.getElementById('formCard');
+    const successCard = document.getElementById('successCard');
+    const serverError = document.getElementById('serverError');
+
+    function clearErrors() {
+      ['nombre', 'colegio', 'cargo', 'email', 'telefono'].forEach(function (id) {
+        document.getElementById(id).classList.remove('error');
+        document.getElementById('err-' + id).style.display = 'none';
+      });
+      serverError.style.display = 'none';
+    }
+
+    function showFieldError(id, message) {
+      const input = document.getElementById(id);
+      const err = document.getElementById('err-' + id);
+      input.classList.add('error');
+      if (message) err.textContent = message;
+      err.style.display = 'block';
+    }
+
+    function validate(data) {
+      let valid = true;
+      if (!data.nombre) { showFieldError('nombre'); valid = false; }
+      if (!data.colegio) { showFieldError('colegio'); valid = false; }
+      if (!data.cargo) { showFieldError('cargo'); valid = false; }
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!data.email || !emailRegex.test(data.email)) { showFieldError('email'); valid = false; }
+      if (!data.telefono) { showFieldError('telefono'); valid = false; }
+      return valid;
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      clearErrors();
+
+      const data = {
+        nombre: document.getElementById('nombre').value.trim(),
+        colegio: document.getElementById('colegio').value.trim(),
+        cargo: document.getElementById('cargo').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        telefono: document.getElementById('telefono').value.trim()
+      };
+
+      if (!validate(data)) return;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando...';
+
+      const body = new URLSearchParams(data);
+
+      // NOTA: usamos mode 'no-cors' porque Apps Script no envía cabeceras
+      // CORS a dominios externos como GitHub Pages. Esto significa que no
+      // podemos leer la respuesta del servidor — el envío se dispara y,
+      // si la red no falla, mostramos la confirmación. Los datos SÍ se
+      // graban correctamente en la planilla del lado del servidor.
+      fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: body
+      })
+        .then(function () {
+          formCard.style.display = 'none';
+          successCard.style.display = 'block';
+        })
+        .catch(function () {
+          serverError.textContent = 'Error de conexión. Intenta de nuevo.';
+          serverError.style.display = 'block';
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Confirmar inscripción';
+        });
+    });
+  </script>
+
+</body>
+</html>
